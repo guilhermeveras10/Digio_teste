@@ -31,6 +31,16 @@ class HomeView: UIView {
 
     // MARK: - UI Elements
 
+    lazy var scrollView: UIScrollView = {
+        let element = UIScrollView()
+        element.delegate = self
+        element.showsVerticalScrollIndicator = false
+        element.showsHorizontalScrollIndicator = false
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.contentInsetAdjustmentBehavior = .never
+        return element
+    }()
+
     private lazy var stackViewConstraints = Layout.Constraint(
         topAnchor: 50,
         leadingAnchor: 11
@@ -130,6 +140,7 @@ class HomeView: UIView {
         topAnchor: 10,
         leadingAnchor: 11,
         trailingAnchor: -11,
+        bottomAnchor: -32,
         height: 200
     )
     public lazy var collectionViewProducts: UICollectionView = {
@@ -158,7 +169,7 @@ class HomeView: UIView {
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFill
         icon.clipsToBounds = true
-        icon.layer.cornerRadius = 20 // Raio da borda para torná-la arredondada
+        icon.layer.cornerRadius = 20
         return icon
     }()
 
@@ -190,16 +201,18 @@ class HomeView: UIView {
     }
 
     private func addComponents() {
-        addSubview(stackView)
-        addSubview(collectionView)
-        addSubview(stackViewCash)
-        addSubview(titleTwo)
-        addSubview(collectionViewProducts)
+        addSubview(scrollView)
+        scrollView.addSubview(stackView)
+        scrollView.addSubview(collectionView)
+        scrollView.addSubview(stackViewCash)
+        scrollView.addSubview(titleTwo)
+        scrollView.addSubview(collectionViewProducts)
     }
 
     private func addConstraints() {
+        scrollView.addFullScreenConstraint(respectSafeArea: false)
         addStackViewConstraints()
-        addCollectionViewConstraints() // Renomeado para melhor clareza
+        addCollectionViewConstraints()
         addImageConstraints()
         addStackViewCashConstraints()
         addTitleTwoConstraints()
@@ -208,8 +221,8 @@ class HomeView: UIView {
 
     private func addCollectionViewConstraints() {
         collectionView.topAnchor.constraint(
-            equalTo: stackView.bottomAnchor, // Corrigido para empilhar corretamente
-            constant: collectionViewConstraints.topAnchor // Espaçamento entre a stackView e a collectionView
+            equalTo: stackView.bottomAnchor,
+            constant: collectionViewConstraints.topAnchor
         ).isActive = true
         collectionView.leadingAnchor.constraint(
             equalTo: leadingAnchor,
@@ -224,8 +237,8 @@ class HomeView: UIView {
 
     private func addCollectionViewProductsConstraints() {
         collectionViewProducts.topAnchor.constraint(
-            equalTo: titleTwo.bottomAnchor, // Corrigido para empilhar corretamente
-            constant: collectionViewProductsConstraints.topAnchor // Espaçamento entre a stackView e a collectionView
+            equalTo: titleTwo.bottomAnchor,
+            constant: collectionViewProductsConstraints.topAnchor
         ).isActive = true
         collectionViewProducts.leadingAnchor.constraint(
             equalTo: leadingAnchor,
@@ -236,11 +249,21 @@ class HomeView: UIView {
             constant: collectionViewProductsConstraints.trailingAnchor
         ).isActive = true
         collectionViewProducts.heightAnchor.constraint(equalToConstant: collectionViewProductsConstraints.height).isActive = true
+        collectionViewProducts.bottomAnchor.constraint(
+            equalTo: scrollView.bottomAnchor,
+            constant: collectionViewProductsConstraints.bottomAnchor
+        ).isActive = true
+        let bottomRef = collectionViewProducts.bottomAnchor.constraint(
+            equalTo: bottomAnchor,
+            constant: collectionViewProductsConstraints.bottomAnchor
+        )
+        bottomRef.priority = .defaultLow
+        bottomRef.isActive = true
     }
 
     private func addImageConstraints() {
-        image.widthAnchor.constraint(equalToConstant: 40).isActive = true // Largura fixa da imagem
-        image.heightAnchor.constraint(equalToConstant: 40).isActive = true // Altura fixa da imagem
+        image.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 
     private func addStackViewCashConstraints() {
