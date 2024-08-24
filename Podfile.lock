@@ -1,0 +1,26 @@
+PODS:
+  - SCLAlertView (0.8)
+  - SDWebImage (5.19.6):
+    - SDWebImage/Core (= 5.19.6)
+  - SDWebImage/Core (5.19.6)
+  - SwiftLint (0.56.2)
+
+DEPENDENCIES:
+  - SCLAlertView
+  - SDWebImage (~> 5.0)
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - SCLAlertView
+    - SDWebImage
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SDWebImage: a79252b60f4678812d94316c91da69ec83089c9f
+  SwiftLint: bd7cfb914762ab5f0cbb632964849571db075706
+
+PODFILE CHECKSUM: d7ed56e1fe6e334760c8ef4d36a9f288c92b38bb
+
+COCOAPODS: 1.15.2
