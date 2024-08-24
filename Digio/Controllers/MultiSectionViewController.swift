@@ -66,7 +66,7 @@ class MultiSectionViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             SCLAlertView().showError(
                 "\(self.viewModel.errorStatus)",
-                subTitle: "Tente novamente mais tarde"
+                subTitle: self.viewModel.errorMessage
             )
         }
     }

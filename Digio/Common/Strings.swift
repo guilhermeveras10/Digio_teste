@@ -21,5 +21,6 @@ public struct Strings {
         static let load = "Carregando..."
         static let name = "Ola, Maria"
         static let secondTitle = "Produtos"
+        static let errorMessage = "Tente novamente mais tarde"
     }
 }

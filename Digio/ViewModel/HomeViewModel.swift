@@ -40,7 +40,11 @@ class HomeViewModel: DigioManagerProtocol {
     var imageName: UIImage {
         .gtDWTpeapa147Sg77ENYZz3HFESKnOwa1HlrzHXU
     }
-
+    
+    var errorMessage: String {
+        Strings.View.errorMessage
+    }
+    
     var name: String {
         Strings.View.name
     }

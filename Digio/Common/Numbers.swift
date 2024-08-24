@@ -22,4 +22,5 @@ struct Numbers {
         static let secondsInOneHour: TimeInterval = 3600
         static let randomValueAmount = 0.0
     }
+    
 }
