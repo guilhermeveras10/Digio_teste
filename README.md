@@ -1,5 +1,7 @@
 Introdução
 
+sudo gem install cocoapods ou brew install cocoapods -> pod instal.
+
 Este projeto utiliza a Clean Architecture como base para a sua estrutura. A escolha dessa arquitetura se deu por diversos motivos, sendo o principal deles a busca por um código mais manutenível e testável a longo prazo. Embora o MVVM pudesse ser uma opção válida para um projeto desse tamanho, a Clean Architecture, com seus princípios SOLID, oferece uma maior separação de responsabilidades e flexibilidade.
 
 Justificativa das Escolhas Técnicas
