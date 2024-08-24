@@ -279,6 +279,7 @@ class HomeView: UIView {
             equalTo: trailingAnchor,
             constant: stackViewCashConstraints.trailingAnchor
         ).isActive = true
+        stackViewCash.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
 
     private func addTitleTwoConstraints() {
@@ -298,7 +299,7 @@ class HomeView: UIView {
 
     private func addStackViewConstraints() {
         stackView.topAnchor.constraint(
-            equalTo: topAnchor,
+            equalTo: scrollView.topAnchor,
             constant: stackViewConstraints.topAnchor
         ).isActive = true
         stackView.leadingAnchor.constraint(
